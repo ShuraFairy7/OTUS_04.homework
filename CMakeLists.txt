@@ -11,22 +11,12 @@ option(WITH_BOOST_TEST "Whether to build Boost test" ON)
 
 configure_file(version.h.in version.h)
 
-add_executable(editor main.cpp   )
-#add_library(editor_lib )
+add_executable(editor main.cpp)
 
-set_target_properties(editor #editor_lib 
-    PROPERTIES
+set_target_properties(editor PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
-
-#target_include_directories(editor_lib
-#    PRIVATE "${CMAKE_BINARY_DIR}"
-#)
-
-#target_link_libraries(editor PRIVATE
-#    editor_lib
-#)
 
 if(WITH_BOOST_TEST)
     find_package(Boost COMPONENTS unit_test_framework REQUIRED)
@@ -44,17 +34,13 @@ if(WITH_BOOST_TEST)
 
     target_link_libraries(test_version
         ${Boost_LIBRARIES}
-    #    editor_lib
     )
 endif()
 
 if (MSVC)
     target_compile_options(editor PRIVATE
         /W4
-    )
-    #target_compile_options(editor_lib PRIVATE
-    #    /W4
-    #
+    )    
     if(WITH_BOOST_TEST)
         target_compile_options(test_version PRIVATE
             /W4
@@ -63,10 +49,7 @@ if (MSVC)
 else ()
     target_compile_options(editor PRIVATE
         -Wall -Wextra -pedantic -Werror
-    )
-    #target_compile_options(editor_lib PRIVATE
-    #    -Wall -Wextra -pedantic -Werror
-    #)
+    )    
     if(WITH_BOOST_TEST)
         target_compile_options(test_version PRIVATE
             -Wall -Wextra -pedantic -Werror
