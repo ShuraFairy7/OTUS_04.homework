@@ -1,6 +1,6 @@
 # OTUS_04.homework
 
-[:smile:] [Documentation](https://shurafairy777.github.io/OTUS_03.homework/index.html)
+:books: [Documentation](https://shurafairy777.github.io/OTUS_03.homework/index.html)
 
 Задание 4
 
